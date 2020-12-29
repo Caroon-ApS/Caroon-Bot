@@ -17,7 +17,7 @@ namespace Bot.Modules
         public async Task Meme(string subreddit = null)
         {
             var client = new HttpClient();
-            var result = await client.GetStringAsync($"https://reddit.com/r/{subreddit ?? "memes"}/random.json?limit=1");
+            string result = await client.GetStringAsync($"https://reddit.com/r/{subreddit ?? "memes"}/random.json?limit=1");
             if (!result.StartsWith("["))
             {
                 await Context.Channel.SendMessageAsync("This subreddit doesn't work");
