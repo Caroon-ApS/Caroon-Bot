@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Discord.WebSocket;
+using System.Data;
 
 namespace Bot.Modules
 {
@@ -15,6 +16,21 @@ namespace Bot.Modules
         public async Task Ping()
         {
             await Context.Channel.SendMessageAsync("Pong!");
+        }
+
+        [Command("echo")]
+        public async Task Echo([Remainder] string text)
+        {
+            await ReplyAsync(text);
+        }
+
+        [Command("math")]
+        public async Task Math([Remainder] string math)
+        {
+            var dt = new DataTable();
+            var result = dt.Compute(math, null);
+
+            await ReplyAsync(result.ToString());
         }
 
         [Command("info")]
