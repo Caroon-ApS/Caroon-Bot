@@ -1,4 +1,19 @@
+
+<p align="center">
+   <a href="https://www.myget.org/feed/Packages/discord-net">
+		<img src="https://img.shields.io/myget/discord-net/v/Discord.Net.svg"
+			 alt="Gitmoji">
+	</a>
+	<a href="https://gitmoji.dev">
+		<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square"
+			 alt="Gitmoji">
+	</a>
+</p>
+
 # Caroon-Bot
+
+<img src="https://i.imgur.com/yg3BYh4.png" align="right"
+     alt="Size Limit logo by Anton Lovchikov" width="120" height="120">
 A discord bot for the Caroon community
 
 ## Config
