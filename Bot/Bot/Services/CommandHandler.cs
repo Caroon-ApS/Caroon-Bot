@@ -31,8 +31,23 @@ namespace Bot.Services
         public override async Task InitializeAsync(CancellationToken cancellationToken)
         {
             _discord.MessageReceived += OnMessageReceived;
+            _discord.ChannelCreated += OnChannelCreation;
+            _discord.JoinedGuild += OnGuildJoined;
+            //_discord.ReactionAdded += OnReactionAdded;
+
             _commands.CommandExecuted += OnCommandExecuted;
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _provider);
+        }
+
+        private async Task OnGuildJoined(SocketGuild arg)
+        {
+            await arg.DefaultChannel.SendMessageAsync("Thank you for using me UwU");
+        }
+
+        private async Task OnChannelCreation(SocketChannel arg)
+        {
+            if (!(arg is ITextChannel channel)) return;
+            await channel.SendMessageAsync("First!");
         }
 
         private async Task OnMessageReceived(SocketMessage arg)
