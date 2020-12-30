@@ -1,11 +1,27 @@
 # Caroon-Bot
 A discord bot for the Caroon community
 
-## How to run
-A YAML config file named _config.yml needs to be created. Currently it has to cointain the following information:
-```YAML
-prefix: 'your preferred prefix here'
-tokens: 
-    discord: 'your token for connecting to the bot'
+## Config
+
+The template comes with a `appsettings.json` which can be used to provide the prefix and token of your bot.
+
+
 ```
-This file should never be pushed to the Github repository as the token is to be kept secret.
+{
+   "prefix": ";",
+   "token": "token"
+}
+```
+Never push your actual token to the github
+
+## Packages
+
+* [Discord.Net](https://www.nuget.org/packages/Discord.Net/)
+* [Discord.Net.Commands](https://www.nuget.org/packages/Discord.Net.Commands/)
+* [Discord.Net.Core](https://www.nuget.org/packages/Discord.Net.Core/)
+* [Discord.Net.WebSocket](https://www.nuget.org/packages/Discord.Net.WebSocket/)
+* [Discord.Addons.Hosting](https://www.nuget.org/packages/Discord.Addons.Hosting/)
+* [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/)
+* [Microsoft.Extensions.DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/)
+* [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/)
+* [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)
