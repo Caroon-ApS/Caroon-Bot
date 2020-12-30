@@ -18,7 +18,7 @@ A discord bot for the Caroon community
 
 ## Config
 
-The template comes with a `appsettings.json` which can be used to provide the prefix and token of your bot.
+The bot comes with a `appsettings.json` which can be used to provide the prefix and token of your bot.
 
 
 ```
