@@ -2,6 +2,7 @@
 using Discord.Addons.Hosting;
 using Discord.Commands;
 using Discord.WebSocket;
+using Infrastructure;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -19,13 +20,15 @@ namespace Bot.Services
         private readonly DiscordSocketClient _discord;
         private readonly CommandService _commands;
         private readonly IConfiguration _config;
+        private readonly Servers _servers;
 
-        public CommandHandler(IServiceProvider provider, DiscordSocketClient discord, CommandService commands, IConfiguration config)
+        public CommandHandler(IServiceProvider provider, DiscordSocketClient discord, CommandService commands, IConfiguration config, Servers servers)
         {
             _provider = provider;
             _discord = discord;
             _commands = commands;
             _config = config;
+            _servers = servers;
         }
 
         public override async Task InitializeAsync(CancellationToken cancellationToken)
@@ -56,7 +59,8 @@ namespace Bot.Services
             if (message.Source != MessageSource.User) return;
 
             var argPos = 0;
-            if (!message.HasStringPrefix(_config["prefix"], ref argPos) && !message.HasMentionPrefix(_discord.CurrentUser, ref argPos)) return;
+            var prefix = await _servers.GetGuildPrefix((message.Channel as SocketGuildChannel).Guild.Id) ?? ";";
+            if (!message.HasStringPrefix(prefix, ref argPos) && !message.HasMentionPrefix(_discord.CurrentUser, ref argPos)) return;
 
             var context = new SocketCommandContext(_discord, message);
             await _commands.ExecuteAsync(context, argPos, _provider);

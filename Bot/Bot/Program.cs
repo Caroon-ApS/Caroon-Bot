@@ -10,6 +10,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Bot.Services;
+using Infrastructure;
 
 namespace Bot
 {
@@ -53,7 +54,10 @@ namespace Bot
                 })
                 .ConfigureServices((context, services) =>
                 {
-                    services.AddHostedService<CommandHandler>();
+                    services
+                    .AddHostedService<CommandHandler>()
+                    .AddDbContext<CaroonContext>()
+                    .AddSingleton<Servers>();
                 })
                 .UseConsoleLifetime();
 
