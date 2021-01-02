@@ -12,7 +12,7 @@ namespace Bot.Modules
     public class ModerationFunctionality : ModuleBase<SocketCommandContext>
     {
         /* Dangerous */
-        [Command("purge")]
+        [Command("purge", RunMode = RunMode.Async)]
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task Purge(int amount)
         {

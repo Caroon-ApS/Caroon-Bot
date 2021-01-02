@@ -11,6 +11,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Bot.Services;
 using Infrastructure;
+using Bot.Utilities;
 
 namespace Bot
 {
@@ -57,7 +58,8 @@ namespace Bot
                     services
                     .AddHostedService<CommandHandler>()
                     .AddDbContext<CaroonContext>()
-                    .AddSingleton<Servers>();
+                    .AddSingleton<Servers>()
+                    .AddSingleton<Images>();
                 })
                 .UseConsoleLifetime();
 
